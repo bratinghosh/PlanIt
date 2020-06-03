@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PlanIt</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/viewAll.css' />
+  </head>
+  <body>
+    <% include ./templates/header.ejs%>
+    <br><br>
+    <div class="viewAllContainer">
+      <% if(tasks.length>0) {%>
+        <form action="/tasks" method="post">
+          <div style="text-align: left;">
+            <% for(task of tasks) {%>
+              <% if(task.priority) {%>
+                <div style="background-color:#BC8F8F; padding: 1px; margin-bottom: 5px; border-radius: 10px; align-content: center;">
+                  <% if(task.days_left > 0) {%>
+                    <input type="checkbox" id=<%= task.id%> name="ids" value=<%= task.id%>> 
+                    <label for=<%= task.id%>><a href="/tasks/<%= task.id%>"><%= task.name%></a> <span style="color: green;">(<%= task.days_left%> day(s) left)</span></label><br>
+                  <% }%>
+                  <% if(task.days_left == 0) {%>
+                    <input type="checkbox" id=<%= task.id%> name="ids" value=<%= task.id%>> 
+                    <label for=<%= task.id%>><a href="/tasks/<%= task.id%>"><%= task.name%></a> <span style="color: yellow;">(Due today)</span></label><br>
+                  <% }%>
+                  <% if(task.days_left < 0) {%>
+                    <input type="checkbox" id=<%= task.id%> name="ids" value=<%= task.id%>> 
+                    <label for=<%= task.id%>><a href="/tasks/<%= task.id%>"><%= task.name%></a> <span style="color: crimson;">(Past due date)</span></label><br>
+                  <% }%>
+                </div>
+              <% } else {%>
+                <div style="background-color:#9C9C9C; padding: 1px; margin-bottom: 5px; border-radius: 10px; align-content: center;">
+                  <% if(task.days_left > 0) {%>
+                    <input type="checkbox" id=<%= task.id%> name="ids" value=<%= task.id%>> 
+                    <label for=<%= task.id%>><a href="/tasks/<%= task.id%>"><%= task.name%></a> <span style="color: green;">(<%= task.days_left%> day(s) left)</span></label><br>
+                  <% }%>
+                  <% if(task.days_left == 0) {%>
+                    <input type="checkbox" id=<%= task.id%> name="ids" value=<%= task.id%>> 
+                    <label for=<%= task.id%>><a href="/tasks/<%= task.id%>"><%= task.name%></a> <span style="color: yellow;">(Due today)</span></label><br>
+                  <% }%>
+                  <% if(task.days_left < 0) {%>
+                    <input type="checkbox" id=<%= task.id%> name="ids" value=<%= task.id%>> 
+                    <label for=<%= task.id%>><a href="/tasks/<%= task.id%>"><%= task.name%></a> <span style="color: crimson;">(Past due date)</span></label><br>
+                  <% }%>
+                </div>
+              <% }%>
+            <% }%>
+          </div>
+          <br>
+          <div style="text-align: right;">
+            <button type="submit">Delete</button>
+          </div>
+        </form>
+      <% } else {%>
+        <p>Congrats! You have completed all your tasks :)</p>
+      <% }%>
+    </div>
+  </body>
+</html>

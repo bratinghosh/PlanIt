@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PlanIt</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <% include ./templates/header.ejs%>
+    <div style="width: 400px; margin: auto;">
+      <br><br>
+      <form action="/tasks/<%= task.id%>/priority" method="post">
+        <div style="text-align: right;">
+          <button type="submit"><%= task.priority? "Unprioritize": "Prioritize";%></button>
+        </div>
+      </form>
+      <h1><%= task.name%></h1>
+      <p>Due Date: <%= task.endDate%></p><br>
+      <form action="/tasks/<%= task.id%>" method="post">
+        <label for="description"> Description: </label><br>
+        <textarea id="description" type="text" name="description" rows="4" cols="47" required><%= task.description%></textarea><br><br>
+        <div style="text-align: right;">
+          <button type="submit">Update</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

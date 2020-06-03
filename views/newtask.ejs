@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PlanIt</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <% include ./templates/header.ejs%>
+    <div style="width: 400px; margin: auto;">
+      <form action="/tasks/add" method="post">
+        <br><br>
+        <label for="name"> Name: </label><br>
+        <input id="name" type="text" name="name" required><br><br>
+        <label for="endDate"> End Date (DD/MM/YYYY): </label><br>
+        <input id="endDate" type="date" name="endDate" required><br><br>
+        <label for="description"> Description: </label><br>
+        <textarea id="description" type="text" name="description" rows="4" cols="47" placeholder="Task Description..." required></textarea><br><br>
+        <div style="text-align: right;">
+          <button type="submit">Create</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
