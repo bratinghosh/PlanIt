@@ -1,5 +1,5 @@
 # PlanIt
-This is a to-do list application built using vanilla Express.js framework using EJS as the view engine.
+This is a to-do list application built using vanilla Express.js framework and EJS as the view engine.
 
 **Features:**
 - create task
